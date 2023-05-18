@@ -1,70 +1,50 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useSearchParams, useNavigate, createSearchParams } from 'react-router-dom'
-import { AppDispatch, RootState } from "../../store";
-import { fetchPeople, searchPersons } from "../../store/actions";
 import { Link } from "react-router-dom";
-import { Button, CircularProgress, Pagination, TextField } from "@mui/material";
+import { CircularProgress, Pagination } from "@mui/material";
+import styles from './MainPage.module.scss'
+import { useMainPage } from './useMainPage'
 
 export const MainPage = () => {
-    const [searchTerm, setSearchTerm] = useState('');
-    const navigate = useNavigate()
-    const [searchParams] = useSearchParams()
-    const dispatch = useDispatch<AppDispatch>();
-
-    useEffect(() => {
-        if (searchParams.get('page')) {
-            const page = searchParams.get('page');
-            dispatch(fetchPeople(Number(page)))
-        } else {
-            dispatch(fetchPeople());
-        }
-    }, [dispatch, searchParams])
-
-
-
-    const { loading, persons, currentPage, totalPages } = useSelector(
-        (state: RootState) => state.people
-    );
-
-    const handlePageChange = (event: React.ChangeEvent<unknown>, page: number) => {
-        dispatch(fetchPeople(page));
-        navigate({
-            search: `?${createSearchParams({ page: page.toString() })}`
-        })
-    };
-
-    const handleSearch = () => {
-        dispatch(searchPersons(searchTerm));
-    };
+    const {
+        currentPage,
+        handlePageChange,
+        handleSearch,
+        loading,
+        persons,
+        setSearchTerm,
+        totalPages,
+        searchTerm,
+    } = useMainPage()
 
     return (
-        <div>
-            <TextField
-                label="Search"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                style={{ marginBottom: 16 }}
-            />
-            <Button variant="contained" onClick={handleSearch} style={{ marginBottom: 16 }}>
-                Search
-            </Button>
-            {loading ? (
-                <CircularProgress />
-            ) : (
-                <div>
-                    {persons?.map((person) => (
-                        <div key={person.name}>
-                            <Link to={`/person/${person.name}`}>{person.name}</Link>
-                        </div>
-                    ))}
-                </div>
-            )}
+        <div className={styles.root}>
+            <div className={styles.search}>
+                <input
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    className={styles.textField}
+                />
+                <button className={styles.button} onClick={handleSearch}>Search</button>
+            </div>
+            <div className={styles.body}>
+                {loading ? (
+                    <CircularProgress color="warning" />
+                ) : (
+                    <div className={styles.persons}>
+                        {persons?.map((person) => (
+                            <Link className={styles.link} to={`/person/${person.name}`}>
+                                <div className={styles.person} key={person.name}>
+                                    {person.name}
+                                </div>
+                            </Link>
+                        ))}
+                    </div>
+                )}
+            </div>
             <Pagination
+                className={styles.pagination}
                 count={totalPages}
                 page={currentPage}
                 onChange={handlePageChange}
-                style={{ marginTop: 16 }}
             />
         </div>
     )

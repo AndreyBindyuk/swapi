@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { fetchPeople, fetchPerson, searchPersons } from './actions';
 
 export type Person = {
@@ -84,21 +84,19 @@ export const peopleSlice = createSlice({
           }).addCase(searchPersons.rejected, (state, action) => {
             state.loading = false;
             state.error = action.error.message || null;
-            }).addCase(fetchPerson.pending, (state) => {
-                state.loading = true;
-                state.error = null;
-                state.person = null;
-                })
-                .addCase(fetchPerson.fulfilled, (state, action) => {
-                state.loading = false;
-                state.error = null;
-                state.person = action.payload;
-                })
-                .addCase(fetchPerson.rejected, (state, action) => {
-                state.loading = false;
-                state.error = action.error.message || null;
-                state.person = null;
-                });
+          }).addCase(fetchPerson.pending, (state) => {
+            state.loading = true;
+            state.error = null;
+            state.person = null;
+          }).addCase(fetchPerson.fulfilled, (state, action) => {
+             state.loading = false;
+             state.error = null;
+             state.person = action.payload;
+          }).addCase(fetchPerson.rejected, (state, action) => {
+              state.loading = false;
+              state.error = action.error.message || null;
+              state.person = null;
+          });
     }
 })
 

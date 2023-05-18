@@ -1,0 +1,24 @@
+.button {
+    display: block;
+    background: black;
+    color: yellow;
+    border: 2px solid yellow;
+    border-radius: 10px;
+    height: 35px;
+    width: 100px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.header {
+    color: yellow;
+}
+
+.text {
+    color: yellow;
+}
+
+.body {
+    display: flex;
+    justify-content: space-between;
+}

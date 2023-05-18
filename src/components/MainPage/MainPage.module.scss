@@ -1,0 +1,74 @@
+.root {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    max-width: 550px;
+}
+
+.search {
+    display: flex;
+    height: 30px;
+    justify-content: space-between;
+}
+
+.textField {
+    height: 30px;
+    width: 400px;
+    border-radius: 10px;
+    background: yellow;
+    padding-left: 20px;
+    border: 2px solid yellow;
+    outline-width: 0;
+}
+
+.button {
+    display: block;
+    background: black;
+    color: yellow;
+    border: 2px solid yellow;
+    border-radius: 10px;
+    height: 35px;
+    width: 100px;
+    cursor: pointer;
+}
+
+.persons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.person {
+    display: flex;
+    background: yellow;
+    border-radius: 10px;
+    width: 100px;
+    height: 100px;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.link {
+    text-decoration: none;
+    text-align: center;
+}
+
+.circular {
+    color: yellow;
+}
+
+.body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 380px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
