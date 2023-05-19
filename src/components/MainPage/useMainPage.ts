@@ -34,6 +34,8 @@ export const useMainPage = () => {
         dispatch(searchPersons(searchTerm));
     };
 
+    const updateSearchValue = (e: React.BaseSyntheticEvent) => setSearchTerm(e.target.value)
+
     return {
         handleSearch,
         handlePageChange,
@@ -41,7 +43,7 @@ export const useMainPage = () => {
         persons,
         currentPage,
         totalPages,
-        setSearchTerm,
+        updateSearchValue,
         searchTerm
     }
 }

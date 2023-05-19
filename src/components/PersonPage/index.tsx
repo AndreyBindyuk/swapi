@@ -1,5 +1,5 @@
 import { TextField, CircularProgress } from "@mui/material";
-import styles from './PersonPage.module.scss'
+import styles from './PersonPage.module.css'
 import { usePersonPage } from './usePersonPage'
 
 export const PersonPage = () => {

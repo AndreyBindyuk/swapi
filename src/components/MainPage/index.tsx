@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { CircularProgress, Pagination } from "@mui/material";
-import styles from './MainPage.module.scss'
+import styles from './MainPage.module.css'
 import { useMainPage } from './useMainPage'
 
 export const MainPage = () => {
@@ -10,7 +10,7 @@ export const MainPage = () => {
         handleSearch,
         loading,
         persons,
-        setSearchTerm,
+        updateSearchValue,
         totalPages,
         searchTerm,
     } = useMainPage()
@@ -20,7 +20,7 @@ export const MainPage = () => {
             <div className={styles.search}>
                 <input
                     value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
+                    onChange={updateSearchValue}
                     className={styles.textField}
                 />
                 <button className={styles.button} onClick={handleSearch}>Search</button>

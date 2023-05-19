@@ -17,11 +17,11 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           '& .MuiPaginationItem-root': {
-            color: 'yellow', // Yellow color
+            color: 'yellow',
           },
           '& .MuiPaginationItem-page.Mui-selected': {
-            backgroundColor: 'yellow', // Yellow color for selected page
-            color: '#000000', // Black text color for selected page
+            backgroundColor: 'yellow',
+            color: '#000000',
           },
         },
       },
@@ -30,14 +30,14 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           '& .MuiInputBase-input': {
-            color: '#FFE81F', // Yellow color
+            color: '#FFE81F',
 
           },
           '& .MuiInputLabel-root': {
-            color: '#FFE81F', // Yellow color
+            color: '#FFE81F',
           },
           '& .MuiOutlinedInput-notchedOutline': {
-            borderColor: '#FFE81F', // Yellow color for the outline border
+            borderColor: '#FFE81F',
           },
         },
       },

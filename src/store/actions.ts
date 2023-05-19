@@ -5,7 +5,6 @@ export const fetchPeople = createAsyncThunk(
     async (page: number = 1) => {
       const response = await fetch(`https://swapi.py4e.com/api/people/?page=${page}`);
       const people = await response.json()
-      console.log(people)
       return {
         persons: people.results,
         count: people.count,
