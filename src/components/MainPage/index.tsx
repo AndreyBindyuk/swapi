@@ -31,7 +31,7 @@ export const MainPage = () => {
                 ) : (
                     <div className={styles.persons}>
                         {persons?.map((person) => (
-                            <Link className={styles.link} to={`/person/${person.name}`}>
+                            <Link key={person.name} className={styles.link} to={`/person/${person.name}`}>
                                 <div className={styles.person} key={person.name}>
                                     {person.name}
                                 </div>
